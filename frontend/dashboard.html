@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h2 class="dashboard-title">Dashboard Overview</h2>
+
+<div class="dashboard-container">
+
+    <div class="card summary-card">
+        <h3>Total Attendance %</h3>
+        <p id="attendancePercentage">Loading...</p>
+    </div>
+
+    <div class="card summary-card">
+        <h3>Assignments Submitted</h3>
+        <p id="assignmentCount">Loading...</p>
+    </div>
+
+</div>
+
+<div class="chart-container">
+    <canvas id="attendanceChart"></canvas>
+</div>
+
+<div class="chart-container">
+    <canvas id="assignmentChart"></canvas>
+</div>
+
+<script src="../js/dashboard.js"></script>
+
+</body>
+</html>
