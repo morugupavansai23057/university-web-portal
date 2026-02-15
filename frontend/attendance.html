@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+         <div class="logo">
+        <!-- CHANGE LOGO FILE INSIDE images FOLDER -->
+        <img src="images/logo.png" alt="University Logo">
+
+        <div>
+            <!-- CHANGE UNIVERSITY NAME HERE -->
+            <span class="uni-name">ABC Engineering College</span>
+
+            <!-- CHANGE MOTTO HERE -->
+            <small class="motto">Learn • Innovate • Lead</small>
+        </div>
+    </div>
+        <ul class="nav-links">
+            <li><a href="faculty-dashboard.html">Dashboard</a></li>
+            <li><a href="assignment.html">Assignments</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- ATTENDANCE CONTAINER -->
+    <div class="attendance-container">
+        <h2>Mark Attendance</h2>
+
+        <form id="attendanceForm">
+
+            <label>Class:</label>
+            <input type="text" id="className" placeholder="Enter class name" required>
+
+            <label>Date:</label>
+            <input type="date" id="date" required>
+
+            <label>Student Name:</label>
+            <input type="text" id="studentName" placeholder="Enter student name" required>
+
+            <label>Status:</label>
+            <select id="status">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+
+            <button type="submit">Submit Attendance</button>
+
+        </form>
+
+        <p id="resultMessage" style="margin-top:15px;"></p>
+    </div>
+
+    <script>
+        // 🔐 Protect page
+        if (!localStorage.getItem("token")) {
+            window.location.href = "login.html";
+        }
+
+        document.getElementById("attendanceForm")
+        .addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const token = localStorage.getItem("token");
+            const resultMessage = document.getElementById("resultMessage");
+
+            try {
+                const response = await fetch("/api/attendance", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + token
+                    },
+                    body: JSON.stringify({
+                        className: document.getElementById("className").value,
+                        date: document.getElementById("date").value,
+                        studentName: document.getElementById("studentName").value,
+                        status: document.getElementById("status").value
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultMessage.style.color = "green";
+                    resultMessage.innerText = data.message || "Attendance submitted successfully!";
+                } else {
+                    resultMessage.style.color = "red";
+                    resultMessage.innerText = data.message || "Submission failed.";
+                }
+
+            } catch (error) {
+                resultMessage.style.color = "red";
+                resultMessage.innerText = "Server error. Please try again.";
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

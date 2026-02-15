@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+          <div class="logo">
+        <!-- CHANGE LOGO FILE INSIDE images FOLDER -->
+        <img src="images/logo.png" alt="University Logo">
+
+        <div>
+            <!-- CHANGE UNIVERSITY NAME HERE -->
+            <span class="uni-name">ABC Engineering College</span>
+
+            <!-- CHANGE MOTTO HERE -->
+            <small class="motto">Learn • Innovate • Lead</small>
+        </div>
+    </div>
+    
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="attendance.html">Attendance</a></li>
+            <li><a href="assignment.html">Assignments</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- DASHBOARD SECTION -->
+    <div class="faculty-dashboard">
+        <h1>Faculty Dashboard</h1>
+
+        <div class="faculty-actions">
+
+            <div class="faculty-card">
+                <h3>Mark Attendance</h3>
+                <p>Record and manage student attendance.</p>
+                <br>
+                <a href="attendance.html" class="btn-primary">Open</a>
+            </div>
+
+            <div class="faculty-card">
+                <h3>View Assignments</h3>
+                <p>Review and evaluate student submissions.</p>
+                <br>
+                <a href="assignment.html" class="btn-primary">Open</a>
+            </div>
+
+            <div class="faculty-card">
+                <h3>Student Dashboard</h3>
+                <p>View student analytics and reports.</p>
+                <br>
+                <a href="dashboard.html" class="btn-primary">Open</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Protect page (only logged in users)
+        if (!localStorage.getItem("token")) {
+            window.location.href = "login.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

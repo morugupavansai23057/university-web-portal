@@ -9,6 +9,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: #f4f6f9;
     color: #333;
+    line-height: 1.6;
 }
 
 /* ===== NAVBAR ===== */
@@ -22,8 +23,32 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.uni-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.motto {
+    font-size: 12px;
+    color: #ddd;
+}
+
+/* NAV LINKS */
 .nav-links {
     list-style: none;
     display: flex;
@@ -43,7 +68,7 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-    height: 90vh;
+    min-height: 90vh;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
     display: flex;
     align-items: center;
@@ -61,12 +86,12 @@ body {
 
 .hero p {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .hero-buttons a {
     margin: 10px;
-    padding: 12px 25px;
+    padding: 12px 30px;
     text-decoration: none;
     border-radius: 30px;
     font-weight: bold;
@@ -93,57 +118,8 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
-/* ===== REGISTER PAGE ONLY ===== */
 
-.register-container {
-    width: 380px;
-    margin: 80px auto;
-    padding: 35px;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    text-align: center;
-    color: white;
-}
-
-.register-container h2 {
-    margin-bottom: 20px;
-}
-
-.register-container input,
-.register-container select {
-    width: 90%;
-    padding: 12px;
-    margin: 12px 0;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-}
-
-.register-container button {
-    width: 95%;
-    padding: 12px;
-    margin-top: 10px;
-    background: linear-gradient(135deg, #ff9800, #ff5722);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.register-container button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 87, 34, 0.4);
-}
-
-.register-container a {
-    color: #ffcc00;
-    font-weight: bold;
-}
-
-/* ===== SECTIONS ===== */
+/* ===== SECTION ===== */
 .section {
     padding: 70px 20px;
     text-align: center;
@@ -163,7 +139,7 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     padding: 25px;
     width: 280px;
@@ -177,27 +153,121 @@ body {
     box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
 
-/* ===== FOOTER ===== */
-footer {
-    background: #1e3c72;
-    color: white;
-    padding: 25px;
+/* ===== FACULTY DASHBOARD ===== */
+.faculty-dashboard {
+    padding: 60px 20px;
     text-align: center;
 }
 
-footer a {
-    color: #ffcc00;
-    margin: 0 10px;
-    text-decoration: none;
+.faculty-actions {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.faculty-card {
+    background: white;
+    width: 260px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+
+.faculty-card:hover {
+    transform: translateY(-8px);
+}
+
+/* ===== FORMS (Attendance & Assignment) ===== */
+.attendance-container,
+.assignment-container {
+    width: 500px;
+    margin: 60px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.attendance-container input,
+.assignment-container input,
+.attendance-container select {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.attendance-container button,
+.assignment-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.attendance-container button:hover,
+.assignment-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== LOGIN & REGISTER ===== */
+.login-container,
+.register-container {
+    width: 380px;
+    margin: 80px auto;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.login-container {
+    background: #f5f5f5;
+}
+
+.register-container {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+}
+
+.login-container input,
+.register-container input,
+.register-container select {
+    width: 90%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 6px;
+    border: none;
+}
+
+.login-container button,
+.register-container button {
+    width: 95%;
+    padding: 12px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.error-msg {
+    color: red;
+    margin-top: 10px;
 }
 
 /* ===== DASHBOARD ===== */
-.dashboard-title {
-    text-align: center;
-    margin: 30px 0;
-    font-size: 2rem;
-}
-
 .dashboard-container {
     display: flex;
     justify-content: center;
@@ -219,10 +289,19 @@ footer a {
 .summary-card:hover {
     transform: translateY(-8px);
 }
+/* ===== DASHBOARD ===== */ .dashboard-title { text-align: center; margin: 30px 0; font-size: 2rem; } .dashboard-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin: 20px; } .summary-card { width: 260px; text-align: center; padding: 25px; background: white; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: 0.3s ease; } .summary-card:hover { transform: translateY(-8px); } .chart-container { width: 85%; margin: 40px auto; }
+/* ===== FOOTER ===== */
+footer {
+    background: #1e3c72;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
 
-.chart-container {
-    width: 85%;
-    margin: 40px auto;
+footer a {
+    color: #ffcc00;
+    margin: 0 10px;
+    text-decoration: none;
 }
 
 /* ===== DARK MODE ===== */
@@ -246,43 +325,6 @@ footer a {
     from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-.login-container {
-    width: 350px;
-    margin: 50px auto;
-    padding: 30px;
-    background: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.login-container input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.login-container .btn-primary {
-    width: 95%;
-    background: #1e3c72;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.login-container .btn-primary:hover {
-    background: #2a5298;
-}
-
-.error-msg {
-    color: red;
-    margin-top: 10px;
-}
-
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
@@ -303,21 +345,17 @@ footer a {
     }
 
     .hero {
-        height: auto;
         padding: 60px 20px;
     }
 
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
+    .card-container,
     .dashboard-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .chart-container {
-        width: 95%;
+    .attendance-container,
+    .assignment-container {
+        width: 90%;
     }
 }

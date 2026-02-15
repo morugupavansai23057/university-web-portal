@@ -2,80 +2,149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>ABC Engineering College Portal</title> <!-- CHANGE UNIVERSITY NAME HERE -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Portal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="University Logo">
-            <span>My University</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="login.html">Student Portal</a></li>
-            <li><a href="faculty.html">Faculty Portal</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="logo">
+        <!-- CHANGE LOGO FILE INSIDE images FOLDER -->
+        <img src="images/logo.png" alt="University Logo">
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to My University</h1>
-            <p>Knowledge is Power</p>
-            <div class="hero-buttons">
-                <a href="login.html" class="btn-primary">Student Login</a>
-                <a href="faculty.html" class="btn-secondary">Faculty Login</a>
-            </div>
-        </div>
-    </section>
+        <div>
+            <!-- CHANGE UNIVERSITY NAME HERE -->
+            <span class="uni-name">ABC Engineering College</span>
 
-    <!-- LIVE EVENTS SECTION -->
-    <section id="events" class="section">
-        <h2>Upcoming Events</h2>
-        <div id="event-list" class="card-container">
-            <!-- Events will load dynamically -->
+            <!-- CHANGE MOTTO HERE -->
+            <small class="motto">Learn • Innovate • Lead</small>
         </div>
-    </section>
+    </div>
 
-    <!-- FEATURES SECTION -->
-    <section class="section features">
-        <h2>Portal Features</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Attendance System</h3>
-                <p>Faculty can mark and track student attendance easily.</p>
-            </div>
-            <div class="card">
-                <h3>Assignment Submission</h3>
-                <p>Upload assignments and receive instant AI feedback.</p>
-            </div>
-            <div class="card">
-                <h3>Dashboard Analytics</h3>
-                <p>View performance reports and attendance insights.</p>
-            </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="login.html?role=student">Student Portal</a></li>
+        <li><a href="login.html?role=faculty">Faculty Portal</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to ABC Engineering College</h1>
+        <p>Empowering Students Through Technology & Innovation</p>
+
+        <div class="hero-buttons">
+            <a href="login.html?role=student" class="btn-primary">Student Login</a>
+            <a href="login.html?role=faculty" class="btn-secondary">Faculty Login</a>
         </div>
-    </section>
+    </div>
+</section>
+<!-- ================= ABOUT US ================= -->
+<section id="about" class="section">
+    <h2>About Us</h2>
+    <p style="max-width:800px; margin:auto;">
+        ABC Engineering College is committed to delivering excellence in education,
+        research, and innovation. We provide a modern digital learning environment
+        to empower students for global success.
+    </p>
+</section>
+<!-- ================= COURSES ================= -->
+<section id="courses" class="section">
+    <h2>Our Courses</h2>
 
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="footer-content">
-            <p>© 2026 My University | All Rights Reserved</p>
-            <p>Email: info@myuniversity.edu | Phone: +91 9876543210</p>
-            <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">Twitter</a>
-            </div>
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Computer Science Engineering</h3>
+            <p>Artificial Intelligence, Data Science, Cyber Security & more.</p>
         </div>
-    </footer>
 
-    <script src="js/main.js"></script>
+        <div class="card">
+            <h3>Mechanical Engineering</h3>
+            <p>Advanced manufacturing, robotics & design technology.</p>
+        </div>
+
+        <div class="card">
+            <h3>Electronics & Communication</h3>
+            <p>Embedded systems, IoT, VLSI & communication systems.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= LIVE EVENTS ================= -->
+<section id="events" class="section">
+    <h2>Upcoming Events</h2>
+    <div id="event-list" class="card-container"></div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section class="section features">
+    <h2>Portal Features</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Attendance Management</h3>
+            <p>Faculty can mark and monitor attendance with real-time tracking.</p>
+        </div>
+
+        <div class="card">
+            <h3>AI Assignment Evaluation</h3>
+            <p>Submit assignments and receive instant AI-based feedback.</p>
+        </div>
+
+        <div class="card">
+            <h3>Smart Dashboard</h3>
+            <p>Students and faculty can track academic progress efficiently.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact">
+    <div class="footer-content">
+        <p>© 2026 ABC Engineering College | All Rights Reserved</p>
+        <p>Email: info@abcengg.edu | Phone: +91 9876543210</p>
+
+        <div class="social-links">
+            <!-- Replace with real links -->
+            <a href="#">Facebook</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+    // Later you can fetch from backend: fetch('/api/events')
+    const events = [
+        { title: "AI Workshop", date: "March 10, 2026" },
+        { title: "Hackathon 2026", date: "April 5, 2026" },
+        { title: "Annual Tech Fest", date: "May 20, 2026" }
+    ];
+
+    const eventList = document.getElementById("event-list");
+
+    events.forEach(event => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+            <h3>${event.title}</h3>
+            <p>Date: ${event.date}</p>
+        `;
+
+        eventList.appendChild(card);
+    });
+</script>
 
 </body>
 </html>

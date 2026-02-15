@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment Submission</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+          <div class="logo">
+        <!-- CHANGE LOGO FILE INSIDE images FOLDER -->
+        <img src="images/logo.png" alt="University Logo">
+
+        <div>
+            <!-- CHANGE UNIVERSITY NAME HERE -->
+            <span class="uni-name">ABC Engineering College</span>
+
+            <!-- CHANGE MOTTO HERE -->
+            <small class="motto">Learn • Innovate • Lead</small>
+        </div>
+    </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="attendance.html">Attendance</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- ASSIGNMENT CONTAINER -->
+    <div class="assignment-container">
+        <h2>Submit Assignment</h2>
+
+        <form id="assignmentForm" enctype="multipart/form-data">
+
+            <label>Course:</label>
+            <input type="text" name="course" placeholder="Enter course name" required>
+
+            <label>Upload File:</label>
+            <input type="file" name="file" required>
+
+            <button type="submit">Submit Assignment</button>
+
+        </form>
+
+        <p id="resultMessage" style="margin-top:15px;"></p>
+    </div>
+
+    <script>
+        // 🔐 Protect page
+        if (!localStorage.getItem("token")) {
+            window.location.href = "login.html";
+        }
+
+        document.getElementById("assignmentForm")
+        .addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const token = localStorage.getItem("token");
+            const resultMessage = document.getElementById("resultMessage");
+
+            try {
+                const response = await fetch("/api/assignments", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultMessage.style.color = "green";
+                    resultMessage.innerText = data.message || "Assignment submitted successfully!";
+                } else {
+                    resultMessage.style.color = "red";
+                    resultMessage.innerText = data.message || "Submission failed.";
+                }
+
+            } catch (error) {
+                resultMessage.style.color = "red";
+                resultMessage.innerText = "Server error. Please try again.";
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>
